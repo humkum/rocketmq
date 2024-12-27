@@ -422,6 +422,7 @@ public class ConsumerProcessor extends AbstractProcessor {
             requestHeader.setConsumerGroup(consumerGroup);
             requestHeader.setTopic(addressableMessageQueue.getTopic());
             requestHeader.setQueueId(addressableMessageQueue.getQueueId());
+            requestHeader.setSetZeroIfNotFound(false);
             future = serviceManager.getMessageService().queryConsumerOffset(ctx, addressableMessageQueue, requestHeader, timeoutMillis);
         } catch (Throwable t) {
             future.completeExceptionally(t);
